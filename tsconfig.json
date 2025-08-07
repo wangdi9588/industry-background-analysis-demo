@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve", // 或者 "jsx": "react-jsx"，具体取决于你的工具链
+    "jsxFactory": "h", // 指定 JSX 的工厂函数为 Vue 的 h 函数
+    "jsxFragmentFactory": "Fragment", // 指定 Fragment 的工厂函数
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "lib": ["ESNext", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["src/*.ts", "src/*.d.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "public/static/**/*.ts"],
+
+}

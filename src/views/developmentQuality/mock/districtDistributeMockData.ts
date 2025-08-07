@@ -1,0 +1,23 @@
+export const districtDistributeTrendData = [
+  { name: '成都市', value: 423 },
+  { name: '绵阳市', value: 356 },
+  { name: '德阳市', value: 287 },
+  { name: '宜宾市', value: 198 },
+  { name: '南充市', value: 312 },
+  { name: '达州市', value: 234 },
+  { name: '乐山市', value: 345 },
+  { name: '泸州市', value: 267 },
+  { name: '自贡市', value: 178 },
+  { name: '内江市', value: 221 },
+  { name: '攀枝花市', value: 412 },
+  { name: '广元市', value: 156 },
+  { name: '遂宁市', value: 189 },
+  { name: '广安市', value: 203 },
+  { name: '巴中市', value: 167 },
+  { name: '雅安市', value: 245 },
+  { name: '眉山市', value: 276 },
+  { name: '资阳市', value: 211 },
+  { name: '阿坝藏族羌族自治州', value: 132 },
+  { name: '甘孜藏族自治州', value: 143 },
+  { name: '凉山彝族自治州', value: 187 }
+]
