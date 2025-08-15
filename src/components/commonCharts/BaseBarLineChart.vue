@@ -221,35 +221,37 @@ const setCharts = () => {
         color: '#fff'
       }
     },
-    dataZoom: [
-      {
-        type: 'slider',
-        realtime: true,
-        startValue: 0,
-        show: false,
-        endValue: props.dataZoomEndValue,
-        height: 4,
-        fillerColor: 'rgba(17, 100, 210, 0.42)', // 滚动条颜色
-        borderColor: 'rgba(17, 100, 210, 0.12)',
-        handleSize: 0, // 两边手柄尺寸
-        showDetail: false, // 拖拽时是否展示滚动条两侧的文字
-        top: '96%',
-        rangeMode: ['value', 'value']
-        // zoomLock:true, // 是否只平移不缩放
-        // moveOnMouseMove:true, //鼠标移动能触发数据窗口平移
-        // zoomOnMouseWheel :true, //鼠标移动能触发数据窗口缩放
-      },
-      {
-        type: 'inside', // 支持内部鼠标滚动平移
-        show: false,
-        startValue: 0,
-        endValue: props.dataZoomEndValue,
-        zoomOnMouseWheel: false, // 关闭滚轮缩放
-        moveOnMouseWheel: false, // 开启滚轮平移
-        moveOnMouseMove: false, // 鼠标移动能触发数据窗口平移
-        rangeMode: ['value', 'value']
-      }
-    ],
+    dataZoom: props.isHorizontalBar
+      ? null
+      : [
+          {
+            type: 'slider',
+            realtime: true,
+            startValue: 0,
+            show: false,
+            endValue: props.dataZoomEndValue,
+            height: 4,
+            fillerColor: 'rgba(17, 100, 210, 0.42)', // 滚动条颜色
+            borderColor: 'rgba(17, 100, 210, 0.12)',
+            handleSize: 0, // 两边手柄尺寸
+            showDetail: false, // 拖拽时是否展示滚动条两侧的文字
+            top: '96%',
+            rangeMode: ['value', 'value']
+            // zoomLock:true, // 是否只平移不缩放
+            // moveOnMouseMove:true, //鼠标移动能触发数据窗口平移
+            // zoomOnMouseWheel :true, //鼠标移动能触发数据窗口缩放
+          },
+          {
+            type: 'inside', // 支持内部鼠标滚动平移
+            show: false,
+            startValue: 0,
+            endValue: props.dataZoomEndValue,
+            zoomOnMouseWheel: false, // 关闭滚轮缩放
+            moveOnMouseWheel: false, // 开启滚轮平移
+            moveOnMouseMove: false, // 鼠标移动能触发数据窗口平移
+            rangeMode: ['value', 'value']
+          }
+        ],
     legend: merge(
       {
         show: props.showLegend && originData.length > 1,
@@ -285,7 +287,9 @@ const setCharts = () => {
     yAxis: props.isHorizontalBar ? categoryOption : valueOption,
     series
   }
-  setTimeAutoTranslation(myChart, categoryOption.data, option)
+  if (!props.isHorizontalBar) {
+    setTimeAutoTranslation(myChart, categoryOption.data, option)
+  }
   option && myChart.setOption(option)
 }
 

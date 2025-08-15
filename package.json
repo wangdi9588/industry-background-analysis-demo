@@ -40,8 +40,11 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@amap/amap-jsapi-types": "^0.0.15",
+    "@antv/g2": "^5.3.5",
+    "@types/d3-scale-chromatic": "^3.1.0",
     "@vicons/ionicons5": "^0.13.0",
     "axios": "^1.10.0",
+    "d3-scale-chromatic": "^3.1.0",
     "dayjs": "^1.11.12",
     "echarts": "^5.5.1",
     "lodash-es": "^4.17.21",

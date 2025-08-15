@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<ICardContentProps>(), {
   flex-direction: column;
 
   background: rgba(31, 153, 255, 0.2);
+  overflow: hidden;
 
   .card-content {
     height: 0;
@@ -38,6 +39,7 @@ const props = withDefaults(defineProps<ICardContentProps>(), {
     padding: 0 16px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 }
 </style>
