@@ -2,7 +2,7 @@
   <div class="business-entity-wrapper">
     <div class="business-entity-left-content">
       <div class="indicator-card-box">
-        <Title title="产业一">
+        <Title :title="activeIndustryInfo.label">
           <template #titleRight>
             <div class="industry-title-right">
               <div>
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <CardContent title="产业一年度变化">
+      <CardContent :title="`${activeIndustryInfo.label}年度变化`">
         <template #titleRight>单位：家</template>
         <BaseBarLineChart
           y1-axis-unit="家"
@@ -43,7 +43,7 @@
           }"
         ></BaseBarLineChart>
       </CardContent>
-      <CardContent title="产业一区域分布">
+      <CardContent :title="`${activeIndustryInfo.label}区域分布`">
         <template #titleRight>单位：家</template>
         <BaseBarLineChart
           :origin-data="districtDistributeTrendChartData"
@@ -84,6 +84,11 @@ import BaseBarLineChart from '@/components/commonCharts/BaseBarLineChart.vue'
 import InputWithBtn from '@/components/common/inputWithBtn/inputWithBtn.vue'
 import { BaseTabs } from '@/components/BaseTabs'
 import CompanyList from './components/companyList.vue'
+import { useGlobalIndustryOptionStore } from '@/stores/useGlobalIndustryOption'
+
+const globalIndustryOptionStore = useGlobalIndustryOptionStore()
+
+const { activeIndustryInfo } = storeToRefs(globalIndustryOptionStore)
 
 const industryYearTreadChartData = ref([
   {
@@ -101,7 +106,7 @@ const industryYearTreadChartData = ref([
 
 const districtDistributeTrendChartData = ref([
   {
-    name: '产业一',
+    name: activeIndustryInfo.value.label,
     type: 'bar',
     data: districtDistributeTrendData,
     backgroundStyle: {

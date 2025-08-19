@@ -134,9 +134,11 @@ const cooperativeLocalList = [
     }
     &.table-row-info-0 {
       background: rgba(56, 229, 140, 0.15);
+      padding-right: 18px;
     }
     &.table-row-info-1 {
       background: rgba(255, 198, 76, 0.2);
+      padding-right: 18px;
     }
   }
 }

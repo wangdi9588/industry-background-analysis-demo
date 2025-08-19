@@ -75,11 +75,16 @@ import BasePieChart from '@/components/commonCharts/BasePieChart.vue'
 import { industryTrendData } from './mock/industryTrendMockData'
 import { Title } from '@/components/common'
 import RateContent from '@/components/common/RateContent/RateContent.vue'
+import { useGlobalIndustryOptionStore } from '@/stores/useGlobalIndustryOption'
+
+const globalIndustryOptionStore = useGlobalIndustryOptionStore()
+
+const { activeIndustryInfo } = storeToRefs(globalIndustryOptionStore)
 const industryTrendChartData = ref(industryTrendData)
 
 const annualTreadChartData = ref([
   {
-    name: '产业一',
+    name: activeIndustryInfo.value.label,
     data: parkInnerCompanyCountYearData,
     type: 'bar',
     backgroundStyle: {
@@ -99,7 +104,7 @@ const annualTreadChartData = ref([
 
 const districtDistributeTrendChartData = ref([
   {
-    name: '产业一',
+    name: activeIndustryInfo.value.label,
     type: 'bar',
     data: districtDistributeTrendData,
     backgroundStyle: {

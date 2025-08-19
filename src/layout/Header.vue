@@ -3,9 +3,16 @@
     <div class="header-left-box">
       <div class="system-title">产业本底分析</div>
       <div class="industry-select" ref="industryPopRef">
-        <n-popselect class="pop-box" v-model:value="activeIndustry" :to="industryPopRef" :options="industryOptions" trigger="click">
+        <n-popselect
+          class="pop-box"
+          v-model:value="activeIndustryInfo.value"
+          :to="industryPopRef"
+          :options="industryOptions"
+          trigger="click"
+          @update:value="updateSelectOption"
+        >
           <div class="pop-select-box">
-            <n-ellipsis class="active-industry-name" style="max-width: 220px">{{ activeIndustry }}</n-ellipsis>
+            <n-ellipsis class="active-industry-name" style="max-width: 220px">{{ activeIndustryInfo.label }}</n-ellipsis>
             <img class="selectIcon" src="/static/images/header/selectIcon.png" />
           </div>
         </n-popselect>
@@ -23,31 +30,33 @@
 
 <script setup lang="ts">
 import { useTimeHook } from '@/hooks/useTimeHook'
+import { TIndustryOptionItem, useGlobalIndustryOptionStore } from '@/stores/useGlobalIndustryOption'
 import { NPopselect, NEllipsis } from 'naive-ui'
+import { SelectBaseOption } from 'naive-ui/es/select/src/interface'
+
+const globalIndustryOptionStore = useGlobalIndustryOptionStore()
 
 const { timeData } = useTimeHook()
 const industryPopRef = shallowRef()
 
-const industryOptions = ref([
-  {
-    label: '产业一',
-    value: '产业一'
-  },
-  {
-    label: '产业二',
-    value: '产业二'
-  },
-  {
-    label: '产业三',
-    value: '产业三'
-  },
-  {
-    label: '产业四',
-    value: '产业四'
-  }
-])
+const { industryOptions, activeIndustryValue, activeIndustryInfo } = storeToRefs(globalIndustryOptionStore)
 
-const activeIndustry = ref('产业一')
+const defaultIndustryOptions = [
+  {
+    label: '生物医药',
+    value: '生物医药'
+  }
+]
+
+function updateSelectOption(value: string | number, option: TIndustryOptionItem) {
+  globalIndustryOptionStore.updateActiveIndustryInfo(value, option)
+}
+
+onMounted(() => {
+  const [firstOption] = defaultIndustryOptions
+  globalIndustryOptionStore.updateIndustryOptions(defaultIndustryOptions)
+  globalIndustryOptionStore.updateActiveIndustryInfo(firstOption.value, firstOption)
+})
 </script>
 
 <style scoped lang="less">

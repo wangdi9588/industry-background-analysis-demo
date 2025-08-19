@@ -4,9 +4,9 @@ import { LoadingContent, MessageContent } from '@/components'
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: 'rgba(25, 75, 141, 1)',
-    primaryColorHover: 'rgba(25, 75, 141, 1)',
-    primaryColorPressed: 'rgba(25, 75, 141, 1)',
+    primaryColor: '#fff',
+    primaryColorHover: '#fff',
+    primaryColorPressed: '#fff',
     heightMedium: '32px'
   },
   Spin: {
@@ -24,7 +24,7 @@ const themeOverrides: GlobalThemeOverrides = {
   },
   Popover: {
     color: '#333',
-    textColor: '#bce2ff'
+    textColor: '#fff'
   },
 
   InternalSelectMenu: {

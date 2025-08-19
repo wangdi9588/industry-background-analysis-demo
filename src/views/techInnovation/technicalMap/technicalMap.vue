@@ -8,12 +8,15 @@
           </div>
         </div>
       </template>
+      <BaseScatterChart :origin-data="scatterChartValueData"></BaseScatterChart>
     </CardContent>
   </div>
 </template>
 
 <script setup lang="ts">
 import { CardContent } from '@/components/common'
+import BaseScatterChart from '@/components/commonCharts/BaseScatterChart.vue'
+import { scatterChartValueData } from './mock'
 
 const legentOptions = [
   {
