@@ -280,6 +280,10 @@ useIndustryOverview3DMapHook('coreMapId')
   .industry-overview-center {
     width: 100%;
     height: 100%;
+
+    #coreMapId {
+      transform-origin: 0px 0px !important;
+    }
   }
   .industry-overview-right {
     display: grid;

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { GlobalThemeOverrides, zhCN, dateZhCN, darkTheme } from 'naive-ui'
 import { LoadingContent, MessageContent } from '@/components'
+import { useSystemScaleHook } from '@/hooks/useGXResizeEventHooks'
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {
@@ -63,34 +64,7 @@ const themeOverrides: GlobalThemeOverrides = {
     tdTextColor: '#bce2ff'
   }
 }
-
-const scaleObj = ref<any>({
-  nAuot_width: 1,
-  nAuot_height: 1
-})
-provide('scaleObj', scaleObj)
-
-const _GXResizeEvent = () => {
-  const nDefault_width = 1920
-  const nDefault_height = 1080
-  const nClient_width = document.documentElement.clientWidth
-  const nClient_height = document.documentElement.clientHeight
-  const nAuot_width = nClient_width / nDefault_width
-  const nAuot_height = nClient_height / nDefault_height
-  const jNodeBody = document.getElementById('app') as HTMLElement
-  jNodeBody.style.transform = `scale(${nAuot_width},${nAuot_height})`
-  scaleObj.value.nAuot_width = nAuot_width
-  scaleObj.value.nAuot_height = nAuot_height
-}
-window.onresize = () => {
-  _GXResizeEvent()
-}
-window.addEventListener('resize', _GXResizeEvent, false)
-_GXResizeEvent()
-
-onUnmounted(() => {
-  window.removeEventListener('resize', _GXResizeEvent, false)
-})
+useSystemScaleHook()
 </script>
 
 <template>
